@@ -1,0 +1,10 @@
+def get_dataloader(args, trainonly=False, testonly=False):
+    if 'cifar' in args.dataset:
+        from .data_loader_CIFAR import get_dataloader
+        return get_dataloader(args, testonly, trainonly)
+    elif args.dataset == 'mnist':
+        from .data_loader_MNIST import get_dataloader
+        return get_dataloader(args, testonly, trainonly)
+    elif args.dataset == 'imagenet':
+        from .data_loader_imagenet import get_dataloader
+        return get_dataloader(args, testonly, trainonly)
