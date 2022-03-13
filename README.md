@@ -1,3 +1,5 @@
+This is a Pytorch based implementation of Locally Asynchronous Parallel SGD and Locally Partitioned Asynchronous Parallel SGD algorithms as described in paper [1] -- please site the paper if you use or derive from this code.
+
 To run the code run the scripts from samplescripts folder.
 
 The three sample scripts can be used in three different 
