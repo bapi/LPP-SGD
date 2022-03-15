@@ -11,13 +11,4 @@ the available systems settings.
 This code was developed on Python 3.5 and has been tested on Python 3.7 based on Anaconda installation. Mainly, the requirement includes the latest Pytorch and Numpy packages. 
 The requirements.txt file can be used to install the required dependencies.
 
-[1] Scaling the Wild: Decentralizing Hogwild!-style Shared-memory SGD, Bapi Chatterjee and Vyacheslav Kungurtsev and Dan Alistarh, arXiv, 2022.
-Cite it as 
-@misc{chatterjee2022scaling,
-      title={Scaling the Wild: Decentralizing Hogwild!-style Shared-memory SGD}, 
-      author={Bapi Chatterjee and Vyacheslav Kungurtsev and Dan Alistarh},
-      year={2022},
-      eprint={2203.06638},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
-}
+[1] Scaling the Wild: Decentralizing Hogwild!-style Shared-memory SGD, Bapi Chatterjee and Vyacheslav Kungurtsev and Dan Alistarh, 2203.06638, arXiv, 2022.
