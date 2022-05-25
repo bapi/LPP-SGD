@@ -233,12 +233,11 @@ def sync_group(isMaster,
 
 
 def save_model(model, rightnow, snapdir, epoch, isbest, savedict=True):
-    torch.save(model.state_dict(), snapdir + "/snap" + str(epoch) + ".pkl")
-    # if savedict:
-    #     snap = model.state_dict()
-    # else:
-    #     snap = [m.data for m in model.parameters()]
-    # torch.save({'m': snap, 't': (rightnow), 'ep': epoch}, snapdir + "/snap.pt")
+    if savedict:
+        snap = model.state_dict()
+    else:
+        snap = [m.data for m in model.parameters()]
+    torch.save({'m': snap, 't': (rightnow), 'ep': epoch}, snapdir + "/snap" + str(epoch) + ".pt")
     # if isbest:
     #     shutil.copyfile(snapdir + "/snap.pt", snapdir + "/bestsnap.pt")
 
@@ -273,7 +272,6 @@ def test_epoch(net,
         b.progress_bar(batch_idx, rightnow, banner_string)
         test_results.append(
             (epoch, batch_idx, rightnow, loss, acc, target_batch_size))
-
 
     if args.storeresults:
         with best_acc.get_lock():
