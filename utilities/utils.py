@@ -275,7 +275,7 @@ def test_epoch(net,
             (epoch, batch_idx, rightnow, loss, acc, target_batch_size))
 
 
-    if args.storeresults and epoch >= args.pre_post_epochs:
+    if args.storeresults:
         with best_acc.get_lock():
             ba = best_acc.value
             save_model(net, rightnow, args.snap_dir, epoch,
