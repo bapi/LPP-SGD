@@ -1,14 +1,14 @@
 #!/bin/bash
 #This is a singlenode runscript to run on 2 GPUs each
 
-
+ml fosscuda/2019a 
 # export PYTHON=~/miniconda3/bin/python
 export PYTHON=~/anaconda3/bin/python
 export PROGRAM=~/workspace/LPP-SGD/main.py #Assuming that the program is unzipped in the /home/$USER folder
 export TOTALGPUS=2 # Change the total number of GPUs if needed
 # export MPIRUN=/usr/bin/mpirun
 export DATADIR=~/workspace/data
-export MPIRUN=/mnt/appl/software/OpenMPI/4.0.3-gcccuda-2020a/bin/mpirun
+export MPIRUN=mpirun #/mnt/appl/software/OpenMPI/4.0.3-gcccuda-2020a/bin/mpirun
 mkdir -p rn20cifar10_single_node
 cd rn20cifar10_single_node
 
