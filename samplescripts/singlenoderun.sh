@@ -22,7 +22,7 @@ $PYTHON $PROGRAM --data-dir $DATADIR  \
 --nesterov --workers 0 --num-threads 2 --test-freq 1 --partition \
 --num-processes 4 --pre_post_epochs 150 --scheduler-type cosine \
 --training-type LAPSGD \
---bs_multiple 1 --test_bs_multiple 1 --epochs 30 --averaging_freq 16 \
+--bs_multiple 1 --test_bs_multiple 1 --epochs 300 --averaging_freq 16 \
 --warm_up_epochs 5 --dist-url tcp://localhost:23456  --storeresults
 
 ############################LPPSGD#####################################
