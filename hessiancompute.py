@@ -126,7 +126,7 @@ criterion = nn.CrossEntropyLoss()  # label loss
 if args.resume == '':
     raise Exception("please choose the trained model")
 saveddictionary = torch.load(args.resume)
-model.load_state_dict(saveddictionary['m'])
+model.load_state_dict(saveddictionary) #['m']
 
 ######################################################
 # Begin the computation
@@ -155,4 +155,4 @@ density_eigen, density_weight = hessian_comp.density()
 print('\n***Top Eigenvalues: ', top_eigenvalues)
 print('\n***Trace: ', np.mean(trace))
 
-get_esd_plot(density_eigen, density_weight)
+# get_esd_plot(density_eigen, density_weight)
