@@ -114,7 +114,7 @@ else:
 #                residual_not=args.residual,
 #                batch_norm_not=args.batch_norm)
 model = get_model(args)
-if args.cuda:
+if args.cuda and torch.cuda.is_available():
     model = model.cuda()
 # model = torch.nn.DataParallel(model)
 
@@ -126,7 +126,7 @@ criterion = nn.CrossEntropyLoss()  # label loss
 if args.resume == '':
     raise Exception("please choose the trained model")
 saveddictionary = torch.load(args.resume)
-model.load_state_dict(saveddictionary) #['m']
+model.load_state_dict(saveddictionary['m']) #
 
 ######################################################
 # Begin the computation
@@ -155,4 +155,46 @@ density_eigen, density_weight = hessian_comp.density()
 print('\n***Top Eigenvalues: ', top_eigenvalues)
 print('\n***Trace: ', np.mean(trace))
 
-# get_esd_plot(density_eigen, density_weight)
+get_esd_plot(density_eigen, density_weight)
+
+"""
+for file in processingfiles:
+    saveddictionary = torch.load(file)
+    model.load_state_dict(saveddictionary['m']) #
+
+    ######################################################
+    # Begin the computation
+    ######################################################
+
+    # turn model to eval mode
+    model.eval()
+    if batch_num == 1:
+        hessian_comp = hessian(model,
+                            criterion,
+                            data=hessian_dataloader,
+                            cuda=args.cuda)
+    else:
+        hessian_comp = hessian(model,
+                            criterion,
+                            dataloader=hessian_dataloader,
+                            cuda=args.cuda)
+
+    print(
+        '********** finish data loading and begin Hessian computation **********')
+
+    top_eigenvalues, _ = hessian_comp.eigenvalues()
+    trace = hessian_comp.trace()
+    density_eigen, density_weight = hessian_comp.density()
+
+    print('\n***Top Eigenvalues: ', top_eigenvalues)
+    print('\n***Trace: ', np.mean(trace))
+
+with open(r'E:/demos/files_demos/account/sales.txt', 'w') as fp:
+    for item in names:
+        # write each item on a new line
+        fp.write("%s\n" % item)
+    print('Done')
+
+
+
+"""

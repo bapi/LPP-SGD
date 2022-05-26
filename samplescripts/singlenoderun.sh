@@ -61,7 +61,6 @@ $PYTHON $PROGRAM --data-dir $DATADIR  \
 --warm_up_epochs 5 --dist-url tcp://localhost:23456  --storeresults
 
 ###########################PLSGD#####################################
-
 # $MPIRUN -n $TOTALGPUS -H localhost:$TOTALGPUS -bind-to none -map-by slot \
 # $PYTHON $PROGRAM --data-dir $DATADIR  \
 # --dataset cifar10 --num-classes 10 --momentum 0.9 --model res20 \
