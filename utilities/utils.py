@@ -203,33 +203,33 @@ class CosineAnnealingLR(object):
             set_current_lr(self.optimizer, lr)
 
 
-def sync_group(isMaster,
-               net,
-               communicator_tensor,
-               mymaster,
-               mygroup=dist.group.WORLD):
-    if isMaster:
-        tensors = [p.data.detach() for p in list(net.parameters())]
-        copy_to_communicator(communicator_tensor, tensors)
+# def sync_group(isMaster,
+#                net,
+#                communicator_tensor,
+#                mymaster,
+#                mygroup=dist.group.WORLD):
+#     if isMaster:
+#         tensors = [p.data.detach() for p in list(net.parameters())]
+#         copy_to_communicator(communicator_tensor, tensors)
 
-    # dist.barrier(group=mygroup)
-    dist.broadcast(communicator_tensor, mymaster, group=mygroup)
+#     # dist.barrier(group=mygroup)
+#     dist.broadcast(communicator_tensor, mymaster, group=mygroup)
 
-    if not isMaster:
-        copy_from_communicator_to_parameters(communicator_tensor,
-                                             list(net.parameters()))
-    if isMaster:
-        tensors = [p.data.detach() for p in list(net.buffers())]
-        copy_to_communicator(communicator_tensor, tensors)
+#     if not isMaster:
+#         copy_from_communicator_to_parameters(communicator_tensor,
+#                                              list(net.parameters()))
+#     if isMaster:
+#         tensors = [p.data.detach() for p in list(net.buffers())]
+#         copy_to_communicator(communicator_tensor, tensors)
 
-    # dist.barrier(group=mygroup)
-    dist.broadcast(communicator_tensor, mymaster, group=mygroup)
+#     # dist.barrier(group=mygroup)
+#     dist.broadcast(communicator_tensor, mymaster, group=mygroup)
 
-    if not isMaster:
-        copy_from_communicator_to_parameters(communicator_tensor,
-                                             list(net.buffers()))
-    # del communicator_tensor
-    # torch.cuda.empty_cache()
+#     if not isMaster:
+#         copy_from_communicator_to_parameters(communicator_tensor,
+#                                              list(net.buffers()))
+#     # del communicator_tensor
+#     # torch.cuda.empty_cache()
 
 
 def save_model(model, rightnow, snapdir, epoch, isbest, savedict=True):
