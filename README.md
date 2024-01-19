@@ -1,4 +1,4 @@
-This is a Pytorch based implementation of Locally Asynchronous Parallel SGD and Locally Partitioned Asynchronous Parallel SGD algorithms as described in paper [1] -- please cite the paper if you use or derive from this code.
+This is a Pytorch based implementation of Locally Asynchronous Parallel SGD and Locally Partitioned Asynchronous Parallel SGD algorithms.
 
 To run the code run the scripts from samplescripts folder.
 
@@ -10,5 +10,3 @@ the available systems settings.
 
 This code was developed on Python 3.5 and has been tested on Python 3.7 based on Anaconda installation. Mainly, the requirement includes the latest Pytorch and Numpy packages. 
 The requirements.txt file can be used to install the required dependencies.
-
-[1] Scaling the Wild: Decentralizing Hogwild!-style Shared-memory SGD, Bapi Chatterjee and Vyacheslav Kungurtsev and Dan Alistarh, 2203.06638, arXiv, 2022.
